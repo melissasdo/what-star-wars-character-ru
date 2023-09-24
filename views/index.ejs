@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Which Star Wars character are you?</title>
-  </head>
-  <body>
-    <h1>Which Star Wars character are you?</h1>
 
-    <form method="post" action="/your-results">
-      <label for="battery-percentage">What is your battery percentage?</label>
-      <input type="text" name="batterypercentage" />
+<%- include('partials/header.ejs') %>
 
-      <label for="name"
-        >What year were you born (only last two digits - eg.: 2000 = 00)</label
-      >
-      <input type="text" name="year" />
-      <button type="submit">OK</button>
-    </form>
+  <body class="container-fluid">
+    <div id="main" role="main" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+      <div class="row">
+        <h1 class="text-center pt-3 pb-3 fixed-top">Which Star Wars character are you?</h1>
+
+        <form method="post" action="/your-results">
+          <div class="mb-3 text-center forms">
+            <label class="form-label" for="battery-percentage">What is your battery percentage?</label>
+            <input type="text" class="form-control mx-auto" name="batterypercentage" />
+          </div>
+
+          <div class="mt-4 mb-3 text-center forms">
+            <label class="form-label" for="name">What year were you born (only last two digits - eg.: 2000 = 00)</label>
+            <input type="text" class="form-control mx-auto" name="year" />
+            <button type="submit" class="mt-4 btn btn-outline-warning">OK</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+    <%- include('partials/footer.ejs') %>
   </body>
+
 </html>

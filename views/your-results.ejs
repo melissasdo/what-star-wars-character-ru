@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>You are...</title>
-  </head>
-  <body>
-    <h1>You are <%= name %></h1>
+<%- include('partials/header.ejs') %>
+
+  <body class="container-fluid">
+    <div id="main" role="main" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+      <h1 class="text-center pt-3 pb-3 fixed-top">You are ...</h1>
+
+      <h2 class="pt-3 pb-3">
+        <%= name %>
+      </h2>
+
+    </div>
+
+    <%- include('partials/footer.ejs') %>
   </body>
+
 </html>
