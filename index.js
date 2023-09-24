@@ -14,26 +14,31 @@ app.use(
 app.set("view engine", "ejs"); /* installing ejs */
 
 app.get("/", async (req, res) => {
-  try {
-    const result = await axios.get(API_URL + "people/1");
-    res.render("index.ejs", {
-      name: result.data.name,
-    });
-  } catch (error) {
-    console.log(error.response.data);
-    res.status(500);
-    res.render("index.ejs", { content: JSON.stringify(error.response.data) });
-  }
+  res.render("index.ejs");
 });
 
+function calcResult(batteryPercentage, year) {
+  const randomNumber = Math.floor(Math.random() * 83) + 1;
+
+  if (batteryPercentage + year > 83) {
+    return randomNumber;
+  } else {
+    return batteryPercentage + year;
+  }
+}
+
 app.post("/your-results", async (req, res) => {
-  const batperc = req.body.batterypercentage;
+  const resCharacter = calcResult(req.body.batterypercentage, req.body.year);
+
   try {
-    res.render("your-results.ejs", { batperc: batperc });
+    const result = await axios.get(API_URL + "people/" + resCharacter);
+    res.render("your-results.ejs", { name: result.data.name });
   } catch (error) {
     console.log(error.response.data);
     res.status(500);
-    res.render("index.ejs", { content: JSON.stringify(error.response.data) });
+    res.render("your-results.ejs", {
+      content: JSON.stringify(error.response.data),
+    });
   }
 });
 
