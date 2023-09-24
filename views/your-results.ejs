@@ -4,14 +4,28 @@
 
   <body class="container-fluid">
     <div id="main" role="main" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-      <h1 class="text-center pt-3 pb-3 fixed-top">You are ...</h1>
+      <% if (locals.name) { %>
+        <h1 class="text-center pt-3 pb-3 fixed-top">You are ...</h1>
 
-      <h2 class="pt-5 pb-3">
-        <%= name %>
-      </h2>
+        <table>
+          <tr>
+            <td>
+              <h2 class="pt-5 pb-3 text-center">
+                <%= name %>
+              </h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="img-thumbnail img-fluid" src="<%= pfp %>" alt="character picture">
+            </td>
+          </tr>
+        </table>
 
+        <% } else {%>
+          <h1 class="text-center pt-3 pb-3">this is not the page you are looking for...</h1>
+          <% }%>
     </div>
-
     <%- include('partials/footer.ejs') %>
   </body>
 
